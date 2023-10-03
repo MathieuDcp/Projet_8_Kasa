@@ -1,0 +1,37 @@
+$color-primary : #fff;
+$color-secondary : #FF6060;
+$color-tertiary : #F7F7F7;
+
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+li{
+    list-style: none;
+}
+
+body{
+    max-width: 1440px;
+    padding-top: 40px;
+    margin: 0 auto;
+    @media screen and (max-width: 500px) {
+        padding-top: 20px;
+    }
+}
+
+@mixin flex($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+  }
