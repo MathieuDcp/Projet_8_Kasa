@@ -1,6 +1,6 @@
 import '../../sass/pages/housing.scss'
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import datas from '../../data/data'
 import Header from "../../components/header/Header";
 import Slider from "../../components/carousel/Carousel"
@@ -10,10 +10,11 @@ import greyStar from '../../assets/grey_star.png';
 import redStar from '../../assets/red_star.png';
 
 
+
+
 export default function Housing() {
 	
 	const [imageSlider, setImageSlider] = useState([]);
-
 	const idHousing = useParams('id').id;
 	const dataCurrentHousing = datas.filter(data => data.id === idHousing);
 	
@@ -22,6 +23,9 @@ export default function Housing() {
 		setImageSlider(dataCurrentHousing[0].pictures);
 	}, [idHousing]);
 
+	if(dataCurrentHousing.length === 0) {
+        return <Navigate to="*" />
+    }
 	const name = dataCurrentHousing[0].host.name.split(' '); 
 	const rating = dataCurrentHousing[0].rating;
 	const description  = dataCurrentHousing[0].description;
@@ -72,7 +76,7 @@ export default function Housing() {
 					</div>	
 				</div>
 			</main>
-			<Footer/>
+			<Footer/> 
 		</>
 	)
 }
